@@ -96,4 +96,14 @@ body {
   white-space: nowrap;
 }
 
+@font-face {
+  font-family: 'iconfont';  /* project id 1303670 */
+  src: url('//at.alicdn.com/t/font_1303670_zovibuv44fs.eot');
+  src: url('//at.alicdn.com/t/font_1303670_zovibuv44fs.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1303670_zovibuv44fs.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1303670_zovibuv44fs.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1303670_zovibuv44fs.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1303670_zovibuv44fs.svg#iconfont') format('svg');
+}
+
 

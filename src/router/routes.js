@@ -5,9 +5,9 @@ import Cart from '../pages/Cart/Cart.vue'
 import Profile from '../pages/Profile/Profile.vue'
 
 export default [
- {path:'/home',component:Home},
- {path:'/categorys',component:Categorys},
- {path:'/general',component:General},
+ {path:'/',component:Home},
+ {path:'/category',component:Categorys},
+ {path:'/topic',component:General},
  {path:'/cart',component:Cart},
  {path:'/profile',component:Profile}
 ]

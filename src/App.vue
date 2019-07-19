@@ -15,7 +15,6 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.router-link-active
-  color #b4282d
+
  
 </style>
