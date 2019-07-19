@@ -43,10 +43,11 @@
 <style lang="stylus" rel="stylesheet/stylus" scoped>
 
  .Container
-    position absolute
+    position fixed
     left 0
     bottom 0
     width 100%
+    background-color #fff
     .nav
       display flex
       height 98px
