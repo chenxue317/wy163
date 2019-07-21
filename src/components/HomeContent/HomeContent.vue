@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="swiper-container">
+    <div class="swiper-container bigSwiper">
         <div class="swiper-wrapper">
           
           <div class="swiper-slide">
@@ -32,20 +32,13 @@
         <div class="swiper-pagination"></div>
     </div>
     <ul class="tag">
-      <li class="item">
-        <i></i>
-        <span>网易自营品牌</span>
+      <li class="item" v-for="(p,index) in policy" :key="index">
+        <i :style="{backgroundImage:`url(${p.icon})`}"></i>
+        <span>{{p.desc}}</span>
       </li>
-      <li class="item">
-        <i></i>
-        <span>网易自营品牌</span>
-      </li>
-      <li class="item">
-        <i></i>
-        <span>网易自营品牌</span>
-      </li>
+      
     </ul>
-    <HomeCategorys/>
+    <HomeCategorys :newProducts="newProducts"/>
     <!-- 广告栏 -->
     <div class="advert">
       <img src="https://yanxuan.nosdn.127.net/9e2248500f961bfe0e872027776b1e79.gif" alt="">
@@ -92,8 +85,129 @@
         </a>
       </div>
     </div>
-    <div class="grayBox"></div>
-    <div class=""></div>
+    <!-- 私人定制轮播图 -->
+    <div class="plivateMade">
+      <h2 class="title">私人定制</h2>
+      <div class="swiper-container plivate-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <ul class="goodsList">
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/10d1e7f4306328d551724235120a9e3f.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/10d1e7f4306328d551724235120a9e3f.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/10d1e7f4306328d551724235120a9e3f.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="swiper-slide">
+            <ul class="goodsList">
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/2bb99960ec48b74d824a523337c9b2fd.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/2bb99960ec48b74d824a523337c9b2fd.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/2bb99960ec48b74d824a523337c9b2fd.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="swiper-slide">
+            <ul class="goodsList">
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/61e0fdaa8705bbf0c140b09a45dbc610.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/61e0fdaa8705bbf0c140b09a45dbc610.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+              <li class="item">
+                <a href="javascript:;">
+                  <div class="imgContainer">
+                    <img src="https://yanxuan.nosdn.127.net/61e0fdaa8705bbf0c140b09a45dbc610.png?imageView&quality=65&thumbnail=330x330" alt="">
+                  </div>
+                  <div class="dsc">
+                    <span>每日坚果藜麦谷物燕麦片...</span>
+                    <span class="price">￥58</span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <!-- 如果需要分页器 -->
+        <div class="swiper-pagination plivate-pagination"></div>
+      </div>
+    </div>
+    <!-- 限时购 -->
+    <LimitedShops :limitShopList="limitShopList"/>
   </div>
 </template>
 
@@ -101,19 +215,42 @@
  import Swiper from 'swiper'
  import "swiper/dist/css/swiper.css"
  import HomeCategorys from './HomeCategorys.vue'
+ import LimitedShops from '../LimitedShop/LimitedShop.vue'
+ import {RECIVE_POLICY} from '../../vuex/mutation-types'
+ import {mapState} from 'vuex'
   export default {
+    computed:{
+      ...mapState(['limitShopList','policy','newProducts'])
+    },
     components:{
-      HomeCategorys
+      HomeCategorys,
+      LimitedShops
     },
     mounted(){
-      new Swiper('.swiper-container',{
+      //获取限时购
+      this.$store.dispatch('getLimitShop')
+      //获取服务策略
+      this.$store.dispatch('getPolicy')
+      //
+      this.$store.dispatch('getNewProducts')
+
+      //上面的轮播图
+      const bigSwiper = new Swiper('.bigSwiper',{
+        loop: true,
+        autoplay:true,
+        pagination: {
+          el: '.swiper-pagination'
+        }
+        },
+      )
+      //小图轮播图
+      const plivateSwiper = new Swiper('.plivate-swiper',{
       loop: true,
       autoplay:true,
       pagination: {
         el: '.swiper-pagination'
       }
       },
-
       )
     }
   }
@@ -123,7 +260,7 @@
 .content
   width 100%
   height 100%
-  padding 100px 0
+  padding 150px 0
   .swiper-container
     width 100%
     height 400px
@@ -152,6 +289,8 @@
     .item
       width 33.3%
       text-align center
+      display flex
+      align-items center
       i 
         display inline-block
         vertical-align middle
@@ -192,8 +331,57 @@
           img
             width 150px
             height 150px  
-  .grayBox
-    width 100%
-    height 20px
-    background-color #ccc            
+  .plivateMade//私人定制
+    height 510px
+    &::after
+      content ''
+      display block
+      width 100%
+      height 20px
+      background-color #eee
+    &::before
+      content ''
+      display block
+      width 100%
+      height 20px
+      background-color #eee  
+    .title 
+      height 100px
+      line-height 100px
+      padding 0 20px
+      width 128px
+      font-size 32px
+    .plivate-swiper
+      height 310px
+      padding-bottom 50px
+      /deep/.swiper-pagination
+        bottom 30px
+        /deep/.swiper-pagination-bullet
+          width 12px
+          height 12px
+          background-color #b4282d
+          border-radius 50%
+
+      .swiper-slide
+        .goodsList
+          display flex
+          .item
+            margin-left 20px
+            width 216px
+            .imgContainer
+              background-color #ccc
+              margin-bottom 12px
+              img 
+                width 216px
+                height 216px
+            .dsc
+              width 216px
+              padding 0 10px
+              box-sizing border-box
+              .price
+                color #b4282d
+
+
+
+
 </style>

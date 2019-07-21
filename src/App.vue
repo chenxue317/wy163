@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrap">
     <router-view></router-view>
     <FooterNav/>
   </div>
@@ -15,6 +15,9 @@
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-
+  .wrap
+    height 100%
+    position relative
+    
  
 </style>

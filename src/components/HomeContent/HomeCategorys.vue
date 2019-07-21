@@ -9,32 +9,44 @@
    </li>
    <li class="item">
     <a href="javascript:;">
-     <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
+     <img src="https://yanxuan.nosdn.127.net/fede8b110c502ec5799702d5ec824792.png" alt="">
+     <span>居家生活</span>
     </a>
    </li>
    <li class="item">
     <a href="javascript:;">
-     <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
+     <img src="https://yanxuan.nosdn.127.net/2415a74cea7d3f080c2dcaa791884572.png" alt="">
+     <span>服饰箱包</span>
     </a>
    </li>
    <li class="item">
     <a href="javascript:;">
-     <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
+     <img src="https://yanxuan.nosdn.127.net/d916591adea776351e084016335e5820.png" alt="">
+     <span>个人清护</span>
     </a>
    </li>
    <li class="item">
     <a href="javascript:;">
-     <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
+     <img src="https://yanxuan.nosdn.127.net/559d2a240ec20b096590a902217009ff.png" alt="">
+     <span>母婴亲子</span>
     </a>
    </li>
       <li class="item">
     <a href="javascript:;">
+     <img src="https://yanxuan.nosdn.127.net/5c088559ebcc3f0ffcda663f04dfbeb2.png" alt="">
+     <span>运动旅行</span>
+    </a>
+   </li>
+   <li class="item">
+    <a href="javascript:;">
+     <img src="https://yanxuan.nosdn.127.net/fbca8e1f2948f0c09fc7672c2c125384.png" alt="">
+     <span>数码家电</span>
+    </a>
+   </li>
+   <li class="item">
+    <a href="javascript:;">
      <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
+     <span>全球特色</span>
     </a>
    </li>
    <li class="item">
@@ -46,19 +58,7 @@
    <li class="item">
     <a href="javascript:;">
      <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
-    </a>
-   </li>
-   <li class="item">
-    <a href="javascript:;">
-     <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
-    </a>
-   </li>
-   <li class="item">
-    <a href="javascript:;">
-     <img src="https://yanxuan.nosdn.127.net/c6fd8835a6400b7da7a016ad85506b69.png" alt="">
-     <span>新品首发</span>
+     <span>超级会员</span>
     </a>
    </li>
      

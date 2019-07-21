@@ -7,25 +7,25 @@
       </span>
       <span class="text">首页</span>
      </router-link>
-     <router-link to="/category" class="navItem" :class="{on:$route.path==='/category'}">
+     <router-link to="/category" class="navItem" :class="{on:$route.path.indexOf('/category')===0}">
       <span>
        <i class="iconfont icon-fenlei"></i>
       </span>
       <span class="text">分类</span>
      </router-link>
-     <router-link to="/topic" class="navItem" :class="{on:$route.path==='/topic'}">
+     <router-link to="/topic" class="navItem" :class="{on:$route.path.indexOf('/topic')===0}">
       <span>
        <i class="iconfont icon-tupian"></i>
       </span>
       <span class="text">识物</span>
      </router-link>
-     <router-link to="/cart" class="navItem" :class="{on:$route.path==='/cart'}">
+     <router-link to="/cart" class="navItem" :class="{on:$route.path.indexOf('/cart')===0}">
       <span>
        <i class="iconfont icon-gouwuche"></i>
       </span>
       <span class="text">购物车</span>
      </router-link>
-     <router-link to="/profile" class="navItem" :class="{on:$route.path==='/profile'}">
+     <router-link to="/profile" class="navItem" :class="{on:$route.path.indexOf('profile')===0}">
       <span>
        <i class="iconfont icon-geren"></i>
       </span>
@@ -37,6 +37,11 @@
 
 <script type="text/ecmascript-6">
   export default {
+    data() {
+      return {
+        
+      }
+    },
   }
 </script>
 
@@ -46,8 +51,10 @@
     position fixed
     left 0
     bottom 0
+    z-index 10
     width 100%
     background-color #fff
+    border-top 1px solid #eee
     .nav
       display flex
       height 98px

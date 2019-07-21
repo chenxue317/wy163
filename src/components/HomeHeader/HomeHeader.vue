@@ -9,7 +9,9 @@
     <!-- 主页导航栏 -->
     <div class="navContainer">
       <ul class="headerNav" v-show="!isShowDetail">
-        <li v-for="(catergory,index) in catergorys" :key="index" class="navItem" :class="{active:index===currentIndex}">
+        <li v-for="(catergory,index) in catergorys" :key="index" class="navItem" 
+        :class="{active:index===currentIndex}"
+        @click="toggle(index)">
           <a href="javascript:;">{{catergory}}</a>
         </li>
       </ul> 
@@ -29,12 +31,13 @@
         {{category}}
       </a>
     </div>
-    <div class="mask" v-show="isShowDetail" @click="isShowDetail=!isShowDetail"></div>
+    <div class="mask" v-show="isShowDetail" @click="closeDetail"></div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import { close } from 'fs';
   export default {
     data() {
       return {
@@ -53,12 +56,10 @@
         isShowDetail:false,//用来标注蒙版以及下拉菜单的展开，false下拉菜单不打开
         currentIndex:0,//用来标注导航第几个元素选中，默认0被选中
         openOrClose:'',//用来标注小箭头的样式，open为向上，close向下
-        
-      
       }
     },
     mounted(){
-     new BScroll('.navContainer', {
+     this.bs = new BScroll('.navContainer', {
        probeType: 3,
        scrollX:true,
        click:true,
@@ -76,6 +77,16 @@
         }else{
           this.openOrClose = 'close'
         }
+      },
+      closeDetail(){
+        this.isShowDetail=false
+        this.openOrClose = 'close'
+      },
+      toggle(index){
+        //点击切换，将当前点击的index给currentIndex切换样式
+        let lis = document.querySelectorAll('.headerNav>li')
+        this.currentIndex = index
+        this.bs.scrollToElement(lis[index],500)
       }
     }
   }
@@ -122,19 +133,17 @@
     z-index 20
     height 60px
     background-color #fff
+    display flex
+    margin-left 20px 
     .headerNav
-      display inline-block
+      display flex
       height 60px
-      width 1460px
       padding-right 160px
       position absolute
       z-index 20
       .navItem
-        display inline-block
         height 100%
         line-height 60px
-        float left
-        flex-shrink 0
         font-size .37333rem
         padding 0 .21333rem
         margin-left 20px
@@ -169,6 +178,7 @@
     flex-wrap wrap
     padding-top 24px
     position absolute
+    top 140px
     z-index 20
     background-color #fff
     a 
