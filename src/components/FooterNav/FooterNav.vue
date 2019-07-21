@@ -1,5 +1,5 @@
 <template>
-  <div class="Container">
+  <div class="Container" v-if="$route.meta.isShowFooter">
    <nav class="nav">
      <router-link to="/" class="navItem" :class="{on:$route.path==='/'}">
       <span>

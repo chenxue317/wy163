@@ -1,26 +1,12 @@
 <template>
 <!-- 识物 -->
   <div class="generalContainer">
-   <header class="general-header">
-     <div class="header">
-       <a class="left-home">
-         <i class="iconfont icon-shouye"></i>
-       </a>
-       <div class="tab">
-         <a href="javascript:;" class="discover active">发现</a>
-         <a href="javascript:;" class="choice">甄选家</a>
-       </div>
-       <div class="searchAndCart">
-         <a href="javascript:;"><i class="iconfont icon-search"></i></a>
-         <a href="javascript:;"><i class="iconfont icon-gouwuche"></i></a>
-       </div>
-     </div>
-     <div class="navWrap" v-if="1">
+   <TopicHeader/>
+   <div class="navWrap" v-if="1">
        <div class="nav">
          <a href="javacript:;" v-for="(nav,index) in navList" :key="index" :class="{active:currentIndex===index}">{{nav}}</a>
        </div>
-     </div>
-   </header>
+    </div>
    <ul class="mainContent">
      <li class="item">
       <a href="javascript:;" class="bigImg" v-if="0">
@@ -66,6 +52,7 @@
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import TopicHeader from '../../components/TopicHeader/TopicHeader.vue'
   export default {
     data() {
       return {
@@ -77,66 +64,35 @@
       new BScroll('.navWrap',{
         scrollX:true
       })
+    },
+    components:{
+      TopicHeader
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
   .generalContainer
-    .general-header
+    .navWrap
       width 100%
+      height 72px
       position fixed
-      z-index 10
-      background-color #fafafa
-      .header
-        position relative
-        width 100%
-        height 100px
-        line-height 100px
-        padding-left 24px
-        padding-right 26px
-        box-sizing border-box
+      left 0
+      top 100px
+      .nav
+        width 1000px
         display flex
-        font-size 28px
-        .icon-shouye
-          font-size 42px
-        .tab
-          display flex
-          justify-content center
-          flex-grow 3
-          a
-            padding 0 8px
-            &.active
-              color #b4282d
-              font-size 34px
-              font-weight 700
-        .searchAndCart
-          position absolute
-          right 26px
-          top 0
-          .iconfont
-            font-size 40px
-          .icon-search
-            margin-right 20px
-      .navWrap
+        padding-bottom 20px
         height 72px
-        border-top 1px solid #ccc
-        display flex
-       
-        .nav
-          width 1000px
-          display flex
-          padding-bottom 20px
-          height 72px
-          line-height 72px
-          a
-            padding 0 8px
-            margin 0 20px
-            font-size 28px
-            flex-shrink 0  
-            &.active
-              color #b4282d
-              border-bottom 1px solid  #b4282d     
+        line-height 72px
+        a
+          padding 0 8px
+          margin 0 20px
+          font-size 28px
+          flex-shrink 0  
+          &.active
+            color #b4282d
+            border-bottom 1px solid  #b4282d     
     .mainContent
       width 100%
       height 100%

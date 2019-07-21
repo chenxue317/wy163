@@ -1,11 +1,18 @@
 import Home from '../pages/Home/Home.vue'
 import Categorys from '../pages/Categorys/Categorys.vue'
 import Topic from '../pages/Topic/Topic.vue'
+import Expert from '../pages/Expert/Expert.vue'
 import Cart from '../pages/Cart/Cart.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import CategoryDetails from '../pages/CategoryDetail/CategoryDetail.vue'
 export default [
- {path:'/',component:Home},
+ {
+  path:'/',
+  component:Home,
+  meta:{
+   isShowFooter:true
+  }
+ },
  {
   path:'/category',
   component:Categorys,
@@ -14,15 +21,38 @@ export default [
     path:'/category/cateList',
     component:CategoryDetails
    },
-   /* {path:'/category/cateList',
-    redirect:'/category/cateList?id=1022001'
-   } */
-   
-  ]
+  ],
+  meta:{
+   isShowFooter:true
+  }
  },
- {path:'/topic',component:Topic},
- {path:'/expert',component:Expert},
- {path:'/cart',component:Cart},
- {path:'/profile',component:Profile},
+ {
+  path:'/topic',
+  component:Topic,
+  meta:{
+   isShowFooter:true
+  }
+ },
+ {
+  path:'/expert',
+  component:Expert,
+  meta:{
+   isShowFooter:false
+  }
+ },
+ {
+  path:'/cart',
+  component:Cart,
+  meta:{
+   isShowFooter:true
+  }
+ },
+ {
+  path:'/profile',
+  component:Profile,
+  meta:{
+   isShowFooter:false
+  }
+ },
  
 ]
