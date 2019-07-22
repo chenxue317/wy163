@@ -5,6 +5,7 @@ import Expert from '../pages/Expert/Expert.vue'
 import Cart from '../pages/Cart/Cart.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import CategoryDetails from '../pages/CategoryDetail/CategoryDetail.vue'
+import EmailRegester from '../pages/EmailRegester/EmailRegester.vue'
 export default [
  {
   path:'/',
@@ -19,8 +20,11 @@ export default [
   children:[
    {
     path:'/category/cateList',
-    component:CategoryDetails
-   },
+    component:CategoryDetails,
+    meta:{
+     isShowFooter:true
+    }
+   }
   ],
   meta:{
    isShowFooter:true
@@ -54,5 +58,12 @@ export default [
    isShowFooter:false
   }
  },
+ {
+  path:'/emailRegister',
+  component:EmailRegester,
+  meta:{
+   isShowFooter:false
+  }
+ }
  
 ]

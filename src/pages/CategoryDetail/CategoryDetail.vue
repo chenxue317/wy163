@@ -20,27 +20,25 @@
     data() {
       return {
         category:{},
-        id : 1
       }
     },
     computed:{
       ...mapState(['categorys'])
     },
     async mounted(){
+      //刷新的时候再次请求
       await this.$store.dispatch('getCategerys')
-      this.id = this.$route.query.id*1 
-      const category = this.categorys.find(c=>this.id===c.id)
-      this.category = category
+      const id = this.$route.query.id*1 
+      this.category =  this.categorys.find(c=>id===c.id)
     },
     watch:{
-      '$route': 'fetchData'
+      $route(){
+        const id = this.$route.query.id*1 
+        this.category = this.categorys.find(c=>id===c.id)
+      }
     },
     methods:{
-      fetchData(){
-        this.id = this.$route.query.id*1 
-        const category = this.categorys.find(c=>this.id===c.id)
-        this.category = category
-      }
+     
     }
   }
 </script>

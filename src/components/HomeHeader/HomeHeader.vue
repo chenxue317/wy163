@@ -134,7 +134,7 @@
     height 60px
     background-color #fff
     display flex
-    margin-left 20px 
+    //margin-left 20px 
     .headerNav
       display flex
       height 60px
