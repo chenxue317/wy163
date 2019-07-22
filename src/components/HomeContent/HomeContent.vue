@@ -38,49 +38,21 @@
       </li>
       
     </ul>
-    <HomeCategorys :newProducts="newProducts"/>
+    <NewProducts :newProducts="newProducts"/>
     <!-- 广告栏 -->
     <div class="advert">
       <img src="https://yanxuan.nosdn.127.net/9e2248500f961bfe0e872027776b1e79.gif" alt="">
     </div>
     <div class="shopingGui">
-      <div class="shopItem">
+      <div class="shopItem" v-for="(shop,index) in shopGuide" :key="index">
         <a href="javascript:;">
-          <p class="title">几元就买小确幸</p>
-          <p class="text">珍惜唾手可得的小幸福</p>
+          <p class="title">{{shop.styleItem.title}}</p>
+          <p class="text">{{shop.styleItem.desc}}</p>
           <div class="pics">
-            <img src="https://yanxuan.nosdn.127.net/1eecf74b769af3ed4c7817aeb5d6bb2b.png?imageView&thumbnail=150x150&quality=75" alt="">
-            <img src="https://yanxuan.nosdn.127.net/f8ab1da43385ce39549272c1571f6397.png?imageView&thumbnail=150x150&quality=75" alt="">
-          </div>
-        </a>
-      </div>
-      <div class="shopItem">
-        <a href="javascript:;">
-          <p class="title">几元就买小确幸</p>
-          <p class="text">珍惜唾手可得的小幸福</p>
-          <div class="pics">
-            <img src="https://yanxuan.nosdn.127.net/1eecf74b769af3ed4c7817aeb5d6bb2b.png?imageView&thumbnail=150x150&quality=75" alt="">
-            <img src="https://yanxuan.nosdn.127.net/f8ab1da43385ce39549272c1571f6397.png?imageView&thumbnail=150x150&quality=75" alt="">
-          </div>
-        </a>
-      </div>
-      <div class="shopItem">
-        <a href="javascript:;">
-          <p class="title">几元就买小确幸</p>
-          <p class="text">珍惜唾手可得的小幸福</p>
-          <div class="pics">
-            <img src="https://yanxuan.nosdn.127.net/1eecf74b769af3ed4c7817aeb5d6bb2b.png?imageView&thumbnail=150x150&quality=75" alt="">
-            <img src="https://yanxuan.nosdn.127.net/f8ab1da43385ce39549272c1571f6397.png?imageView&thumbnail=150x150&quality=75" alt="">
-          </div>
-        </a>
-      </div>
-      <div class="shopItem">
-        <a href="javascript:;">
-          <p class="title">几元就买小确幸</p>
-          <p class="text">珍惜唾手可得的小幸福</p>
-          <div class="pics">
-            <img src="https://yanxuan.nosdn.127.net/1eecf74b769af3ed4c7817aeb5d6bb2b.png?imageView&thumbnail=150x150&quality=75" alt="">
-            <img src="https://yanxuan.nosdn.127.net/f8ab1da43385ce39549272c1571f6397.png?imageView&thumbnail=150x150&quality=75" alt="">
+            <div class="picItem" v-for="(pic,index) in shop.styleItem.picUrlList" :key="index">
+              <img :src="pic" alt="">
+            </div>
+            
           </div>
         </a>
       </div>
@@ -90,112 +62,16 @@
       <h2 class="title">私人定制</h2>
       <div class="swiper-container plivate-swiper">
         <div class="swiper-wrapper">
-          <div class="swiper-slide">
+          <div class="swiper-slide" v-for="(pI,index) in PersonalItem" :key="index">
             <ul class="goodsList">
-              <li class="item">
+              <li class="item" v-for="(item,index) in pI" :key="index">
                 <a href="javascript:;">
                   <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/10d1e7f4306328d551724235120a9e3f.png?imageView&quality=65&thumbnail=330x330" alt="">
+                    <img :src="item.listPicUrl" alt="">
                   </div>
                   <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/10d1e7f4306328d551724235120a9e3f.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/10d1e7f4306328d551724235120a9e3f.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="swiper-slide">
-            <ul class="goodsList">
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/2bb99960ec48b74d824a523337c9b2fd.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/2bb99960ec48b74d824a523337c9b2fd.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/2bb99960ec48b74d824a523337c9b2fd.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div class="swiper-slide">
-            <ul class="goodsList">
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/61e0fdaa8705bbf0c140b09a45dbc610.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/61e0fdaa8705bbf0c140b09a45dbc610.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
-                  </div>
-                </a>
-              </li>
-              <li class="item">
-                <a href="javascript:;">
-                  <div class="imgContainer">
-                    <img src="https://yanxuan.nosdn.127.net/61e0fdaa8705bbf0c140b09a45dbc610.png?imageView&quality=65&thumbnail=330x330" alt="">
-                  </div>
-                  <div class="dsc">
-                    <span>每日坚果藜麦谷物燕麦片...</span>
-                    <span class="price">￥58</span>
+                    <span>{{item.name}}</span>
+                    <span class="price">￥{{item.retailPrice}}</span>
                   </div>
                 </a>
               </li>
@@ -214,26 +90,51 @@
 <script type="text/ecmascript-6">
  import Swiper from 'swiper'
  import "swiper/dist/css/swiper.css"
- import HomeCategorys from './HomeCategorys.vue'
+ import NewProducts from './NewProducts.vue'
  import LimitedShops from '../LimitedShop/LimitedShop.vue'
  import {RECIVE_POLICY} from '../../vuex/mutation-types'
  import {mapState} from 'vuex'
 
   export default {
+    
     computed:{
-      ...mapState(['limitShop','policy','newProducts'])
+      ...mapState(['limitShop','policy','newProducts','shopGuide','personalShop']),
+      //根据大数组拆分小数组,每三个每三个成为一组
+      PersonalItem(){
+        const {personalShop} = this
+        let smallArr = []
+        let bigArr = []
+        personalShop.forEach(shop => {
+          smallArr.push(shop)
+          if(smallArr.length===3){
+            bigArr.push(smallArr)
+            smallArr=[]
+          }
+        });
+        return bigArr
+      }
     },
     components:{
-      HomeCategorys,
+      NewProducts,
       LimitedShops
     },
     mounted(){
-      //获取限时购
-      this.$store.dispatch('getLimitShop')
-      //获取服务策略
-      this.$store.dispatch('getPolicy')
-      //
-      this.$store.dispatch('getNewProducts')
+      const promiseArr = [
+        //获取限时购
+        this.$store.dispatch('getLimitShop'),
+        //获取服务策略
+        this.$store.dispatch('getPolicy'),
+         //获取新品
+        this.$store.dispatch('getNewProducts'),
+        //获取商品导航
+        this.$store.dispatch('getShopGuide'),
+        //获取私人定制
+        this.$store.dispatch('getPersonalShop')
+      ]
+      Promise.all(promiseArr)
+      
+      
+      
 
       //上面的轮播图
       const bigSwiper = new Swiper('.bigSwiper',{
@@ -246,15 +147,16 @@
       )
       //小图轮播图
       const plivateSwiper = new Swiper('.plivate-swiper',{
-      loop: true,
-      autoplay:true,
-      pagination: {
-        el: '.swiper-pagination'
-      }
+        loop: true,
+        autoplay:true,
+        pagination: {
+          el: '.swiper-pagination'
+        }
       },
       )
       
-    }
+    },
+    
   }
 </script>
 
@@ -326,13 +228,19 @@
           font-size 35px
           color #000
           padding-left 10px
+          margin-bottom 10px
         .text
           padding-left 10px
           font-size 24px 
         .pics
-          img
-            width 150px
-            height 150px  
+          display flex
+          margin-top 10px
+          width 100%
+          justify-content space-between
+          .picItem
+            img
+              width 150px
+              height 150px  
   .plivateMade//私人定制
     height 510px
     &::after
@@ -380,6 +288,7 @@
               width 216px
               padding 0 10px
               box-sizing border-box
+              font-size 18px
               .price
                 color #b4282d
 

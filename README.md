@@ -56,3 +56,5 @@
     /(iPad|iPhone OS|iPod|iOS)/i.test(navigator.userAgent)&&(head=document.getElementsByTagName('head'),viewport=document.createElement('meta'),viewport.name='viewport',viewport.content='target-densitydpi=device-dpi, width=540px, user-scalable=no',head.length>0&&head[head.length-1].appendChild(viewport));
   
     ```
+
+    3、需要完成的是统一发送请求---

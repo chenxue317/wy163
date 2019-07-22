@@ -73,7 +73,6 @@
         //this.minute = minute
         this.minute = minute < 10 ? '0'+ minute : minute 
         //this.second = seconds
-        console.log(seconds)
         this.second = seconds < 10 ? '0'+ seconds : seconds
       }
     }

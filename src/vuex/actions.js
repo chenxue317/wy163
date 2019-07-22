@@ -1,5 +1,12 @@
-import { reqLimitShop, reqPolicy, reqNewProducts,reqCategery } from '../api' 
-import {RECIVE_LIMITSHOP,RECIVE_POLICY,RECIVE_NEWPRODUCTS, RECIVE_CATEGORYS, RECIVE_CATEGORYLIST} from './mutation-types'
+import { reqLimitShop, reqPolicy, reqNewProducts,reqCategery, reqShoppingGuide, reqPersonalShop } from '../api' 
+import {
+ RECIVE_LIMITSHOP,
+ RECIVE_POLICY,
+ RECIVE_NEWPRODUCTS, 
+ RECIVE_CATEGORYS, 
+ RECIVE_SHOP_GUIDE,
+ RECIVE_PERSONAL_SHOP
+} from './mutation-types'
 export default {
  //获取限时购列表
  async getLimitShop({commit}){
@@ -30,7 +37,22 @@ export default {
    commit(RECIVE_CATEGORYS,result.data)
   }
  },
+ //获取商品导航
+ async getShopGuide({commit}){
+  const result = await reqShoppingGuide()
+  if(result.code===0){
+   commit(RECIVE_SHOP_GUIDE,result.data)
+  }
+ },
+ 
+ //获取私人定制
 
+ async getPersonalShop({commit}){
+  const result = await reqPersonalShop()
+  if(result.code===0){
+   commit(RECIVE_PERSONAL_SHOP,result.data)
+  }
+ },
 
 
 }

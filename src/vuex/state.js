@@ -1,6 +1,8 @@
 export default {
  limitShop:{},
  policy:[],
- newProducts:[],
- categorys:[]
+ newProducts:{},
+ categorys:[],
+ shopGuide:[],
+ personalShop:[]
 }

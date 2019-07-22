@@ -7,3 +7,7 @@ export const reqPolicy = () => ajax('/policy')
 export const reqNewProducts = () => ajax('/newProducts')
 //获取分类列表
 export const reqCategery = () => ajax('/category')
+//获取shoppingGuide(商品导航)
+export const reqShoppingGuide = () => ajax('/shoppingGuide')
+//获取私人定制
+export const reqPersonalShop = () => ajax('/personalShop')
