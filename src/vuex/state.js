@@ -1,5 +1,5 @@
 export default {
- limitShopList:[],
+ limitShop:{},
  policy:[],
  newProducts:[],
  categorys:[]

@@ -48,3 +48,11 @@
   # day04 登录界面
     1、预解决问题：分类界面路由跳转
        父组件dispatch之后子组件可以直接拿得到
+    2、倒计时实现
+        1）利用moment库  ---不好用--改用原生
+    3、解决ipad适配（lib-flexible插件）     
+    ```
+    //解决lib-flexible不兼容ipad、ipad pro
+    /(iPad|iPhone OS|iPod|iOS)/i.test(navigator.userAgent)&&(head=document.getElementsByTagName('head'),viewport=document.createElement('meta'),viewport.name='viewport',viewport.content='target-densitydpi=device-dpi, width=540px, user-scalable=no',head.length>0&&head[head.length-1].appendChild(viewport));
+  
+    ```

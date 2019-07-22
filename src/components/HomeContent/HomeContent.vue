@@ -207,7 +207,7 @@
       </div>
     </div>
     <!-- 限时购 -->
-    <LimitedShops :limitShopList="limitShopList"/>
+    <LimitedShops :limitShopObj="limitShop"/>
   </div>
 </template>
 
@@ -218,9 +218,10 @@
  import LimitedShops from '../LimitedShop/LimitedShop.vue'
  import {RECIVE_POLICY} from '../../vuex/mutation-types'
  import {mapState} from 'vuex'
+
   export default {
     computed:{
-      ...mapState(['limitShopList','policy','newProducts'])
+      ...mapState(['limitShop','policy','newProducts'])
     },
     components:{
       HomeCategorys,
@@ -252,6 +253,7 @@
       }
       },
       )
+      
     }
   }
 </script>

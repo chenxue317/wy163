@@ -2,8 +2,8 @@ import { RECIVE_LIMITSHOP, RECIVE_POLICY, RECIVE_NEWPRODUCTS,RECIVE_CATEGORYS } 
 
 
 export default {
- [RECIVE_LIMITSHOP](state,limitShopList){
-  state.limitShopList = limitShopList
+ [RECIVE_LIMITSHOP](state,limitShop){
+  state.limitShop = limitShop
  },
 
  [RECIVE_POLICY](state,policy){

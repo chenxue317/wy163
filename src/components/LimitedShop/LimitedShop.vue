@@ -5,11 +5,11 @@
     <div class="t-left">
      <h1>限时购</h1>
      <div class="durTime">
-      <span class="hours">00</span>
+      <span class="hours">{{hour}}</span>
       <span class="col">:</span>
-      <span class="minutes">00</span>
+      <span class="minutes">{{minute}}</span>
       <span class="col">:</span>
-      <span class="seconds">00</span>
+      <span class="seconds">{{second}}</span>
      </div>
     </div>
     <div class="t-right">
@@ -18,7 +18,7 @@
     </div>
    </div>
    <ul class="content">
-    <li class="item" v-for="shop in limitShopList" :key="shop.itemId">
+    <li class="item" v-for="shop in limitShopObj.itemList" :key="shop.itemId">
      <a href="javascript:;">
       <div class="imgWrap">
        <img :src="shop.picUrl" alt="">
@@ -41,7 +41,41 @@
 <script type="text/ecmascript-6">
   export default {
     props:{
-      limitShopList:Array
+      limitShopObj:Object
+    },
+    data() {
+      return {
+        date:0,
+        hour:0,
+        minute:0,
+        second:0
+      }
+    },
+    mounted(){
+      this.timeId = setInterval(()=>{
+        this.date = this.limitShopObj.nextStartTime - Date.now()
+      },1000) 
+    },
+    watch:{
+      date(){
+        //获取秒数
+        let second = Math.floor(this.date/1000)
+        //console.log(second)
+        let hour = Math.floor(second/3600)
+        
+        let minute = Math.floor((second-hour*3600)/60)
+       
+
+        let seconds = Math.floor((second-hour*3600-minute*60))
+        
+        
+        this.hour = hour < 10 ? '0'+ hour:hour
+        //this.minute = minute
+        this.minute = minute < 10 ? '0'+ minute : minute 
+        //this.second = seconds
+        console.log(seconds)
+        this.second = seconds < 10 ? '0'+ seconds : seconds
+      }
     }
   }
 </script>

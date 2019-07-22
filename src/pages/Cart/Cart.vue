@@ -1,6 +1,6 @@
 <template>
   <div class="cartContainer">
-    <div class="cart-header">
+    <div class="cart-header" style="display:fixed">
       <div class="content">
         <h2>购物车</h2>
         <span>领券</span>
@@ -50,7 +50,7 @@
   background-color #eee
   .cart-header
     height 88px
-    display fixed
+    display fixed 
     left 0
     top 0
     background-color #fff
