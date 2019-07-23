@@ -7,56 +7,66 @@
          <a href="javacript:;" v-for="(nav,index) in navList" :key="index" :class="{active:currentIndex===index}">{{nav}}</a>
        </div>
     </div>
-   <div class="contenteWrap">
-     <ul class="mainContent" v-for="(t,index) in topic" :key="index">
-      <li class="item"  v-for="(item,index) in t.topics" :key="index">
-        <a href="javascript:;" v-if="item.ad" class="ad">
-          <img :src="item.ad.picUrl" alt="">
-        </a>
-        <a href="javascript:;" class="bigImg" v-if="item.type===0">
-          <div class="top">
-            <img :src="item.avatar" alt="">
-            <span>{{item.nickname}}</span>
-          </div>
-          <p class="desc">{{item.title}}</p>
-          <div class="pic">
-            <img :src="item.picUrl" alt="">
-          </div>
-          <div class="view">
-            <i class="iconfont icon-view"></i>
-            <span class="num">{{item.readCount}}人看过</span>
-          </div>
-        </a>
-        <a href="javascript:;" class="smallImg" v-if="item.type===2">
-          <div class="left">
-            <div class="top">
-              <img :src="item.avatar" alt="">
-              <span>{{item.nickname}}</span>
-            </div>
-            <p class="desc">{{item.title}}</p>
-            <p class="category">{{item.subTitle}}</p>
-            <div class="view">
-              <i class="iconfont icon-view"></i>
-              <span class="num">{{item.readCount}}人看过</span>
-            </div>
-          </div>
-          
-          <div class="pic">
-            <img :src="item.picUrl" alt="">
-          </div>
-          
-        </a>
-      </li>
-    </ul>
-   </div>
+    <div ref="betterScroll" class="betterScroll">
+      <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+        <div class="contenteWrap">
+          <img src="../../assest/loading.jpg" alt="" v-if="!topic.length" class="loading">
+          <ul class="mainContent" v-for="(t,index) in topic" :key="index">
+              <li v-if="t.ad" class="ad">
+                <a href="javascript:;" v-if="t.ad" class="ad">
+                  <img :src="t.ad.picUrl" alt="">
+                </a>
+              </li>
+              <li class="item"  v-for="(item,index) in t.topics" :key="index">
+                <a href="javascript:;" class="bigImg" v-if="item.type===0 ||item.type===1 ">
+                  <div class="top" v-if="item.avatar">
+                    <img :src="item.avatar" alt="">
+                    <span>{{item.nickname}}</span>
+                  </div>
+                  <p class="desc">{{item.title}}</p>
+                  <div class="pic">
+                    <img v-lazy="item.picUrl" alt="">
+                  </div>
+                  <div class="view">
+                    <i class="iconfont icon-view"></i>
+                    <span class="num">{{item.readCount}}人看过</span>
+                  </div>
+                </a>
+                <a href="javascript:;" class="smallImg" v-if="item.type===2">
+                  <div class="left">
+                    <div class="top">
+                      <img v-lazy="item.avatar" alt="" >
+                      <span>{{item.nickname}}</span>
+                    </div>
+                    <p class="desc">{{item.title}}</p>
+                    <p class="category">{{item.subTitle}}</p>
+                    <div class="view">
+                      <i class="iconfont icon-view"></i>
+                      <span class="num">{{item.readCount}}人看过</span>
+                    </div>
+                  </div>
+                  
+                  <div class="pic">
+                    <img v-lazy="item.picUrl" alt="">
+                  </div>
+                  
+                </a>
+              </li>
+          </ul>
+        </div>
+      </mt-loadmore>  
+    </div>
+    
    
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import { Loadmore } from 'mint-ui';
   import {mapState} from 'vuex'
   import TopicHeader from '../../components/TopicHeader/TopicHeader.vue'
+
   export default {
     data() {
       return {
@@ -68,21 +78,34 @@
       ...mapState(['topic']),
     
     },
+    methods:{
+      loadBottom() {
+        ...// load more data
+        this.allLoaded = true;// if all data are loaded
+        this.$refs.loadmore.onBottomLoaded();
+      }
+    },
     mounted(){
       //一上来默认加载前五页
-      this.$store.dispatch('getTopic')
-   /*    new BScroll('.navWrap',{
+      //this.$store.dispatch('getTopic',{page:1,size:5})
+      this.$store.dispatch('getTopic',{page:1,size:3})
+      new BScroll('.navWrap',{
         scrollX:true
-      }) */
+      })
+      this.bs = new BScroll(this.$refs.betterScroll,{})
     },
     components:{
-      TopicHeader
+      TopicHeader,
+      Loadmore
     }
   }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus" scoped>
+ 
   .generalContainer
+    width 100%
+    height 100%
     .navWrap
       width 100%
       height 72px
@@ -105,70 +128,50 @@
           &.active
             color #b4282d
             border-bottom 1px solid  #b4282d 
-    .contenteWrap     
+    .betterScroll
       width 100%
       height 100%
-      padding 172px 0 100px      
-      .mainContent
-       
-        &::before
-          content ''
-          display block
-          width 100%
-          height 20px
-          background-color #f0f0f0
-        .item
-          position relative
-          &::after
+      .contenteWrap  
+        padding 172px 0 100px  
+        .loading
+          width 60%
+          height 40%
+          position absolute
+          left 0
+          top 0
+          right 0
+          bottom 0
+          margin auto  
+        .mainContent
+          &::before
             content ''
-            position absolute
-            left 0
-            bottom 0
+            display block
             width 100%
             height 20px
             background-color #f0f0f0
-          a
-            color #333
-            display block
-            padding 36px 30px
-            &.ad
+          .ad
+            width 100%
+            height 376px 
+            img 
               width 100%
               height 100% 
-            &.bigImg     
-              .top
-                margin-bottom 24px
-                display flex
-                align-items center
-                img 
-                  width 54px
-                  height 54px
-                  border-radius 50%
-                  margin-right 12px
-                  border 1px solid #d9d9d9
-                span 
-                  font-size 28px
-                  
-              .desc
-                margin-bottom 16px
-                font-size 36px
-              .pic
-                img 
-                  width 100%
-                  height 376px 
-              .view
-                display flex
-                align-items center
-                margin-top 18px
-                color gray
-                font-size 24px 
-                .iconfont
-                  margin-right 8px 
-            &.smallImg 
-              display flex
-              justify-content space-between
-              .left
-                width 400px
+          .item
+            position relative
+            &::after
+              content ''
+              position absolute
+              left 0
+              bottom 0
+              width 100%
+              height 20px
+              background-color #f0f0f0
+            a
+              color #333
+              display block
+              padding 36px 30px
+              &.bigImg     
                 .top
+                  margin-bottom 24px
                   display flex
                   align-items center
                   img 
@@ -183,22 +186,54 @@
                 .desc
                   margin-bottom 16px
                   font-size 36px
-                  padding-top 32px 
-                .category
-                  color #7f7f7f
-                  padding-top 8px  
+                .pic
+                  img 
+                    width 100%
+                    height 376px 
                 .view
                   display flex
                   align-items center
                   margin-top 18px
-                  color #7f7f7f
+                  color gray
                   font-size 24px 
                   .iconfont
-                    margin-right 8px   
-              .pic
-                img 
-                  width 272px
-                  height 272px 
+                    margin-right 8px 
+              &.smallImg 
+                display flex
+                justify-content space-between
+                .left
+                  width 400px
+                  .top
+                    display flex
+                    align-items center
+                    img 
+                      width 54px
+                      height 54px
+                      border-radius 50%
+                      margin-right 12px
+                      border 1px solid #d9d9d9
+                    span 
+                      font-size 28px
+                      
+                  .desc
+                    margin-bottom 16px
+                    font-size 36px
+                    padding-top 32px 
+                  .category
+                    color #7f7f7f
+                    padding-top 8px  
+                  .view
+                    display flex
+                    align-items center
+                    margin-top 18px
+                    color #7f7f7f
+                    font-size 24px 
+                    .iconfont
+                      margin-right 8px   
+                .pic
+                  img 
+                    width 272px
+                    height 272px 
                   
               
           

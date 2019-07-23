@@ -6,6 +6,7 @@ import Cart from '../pages/Cart/Cart.vue'
 import Profile from '../pages/Profile/Profile.vue'
 import CategoryDetails from '../pages/CategoryDetail/CategoryDetail.vue'
 import EmailRegester from '../pages/EmailRegester/EmailRegester.vue'
+import Search from '../pages/Search/Search.vue'
 export default [
  {
   path:'/',
@@ -61,6 +62,13 @@ export default [
  {
   path:'/emailRegister',
   component:EmailRegester,
+  meta:{
+   isShowFooter:false
+  }
+ },
+ {
+  path:'/search',
+  component:Search,
   meta:{
    isShowFooter:false
   }

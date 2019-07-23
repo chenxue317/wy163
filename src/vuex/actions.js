@@ -1,4 +1,14 @@
-import { reqLimitShop, reqPolicy, reqNewProducts,reqCategery, reqShoppingGuide, reqPersonalShop, reqTopic } from '../api' 
+import { 
+  reqLimitShop, 
+  reqPolicy, 
+  reqNewProducts,
+  reqCategery, 
+  reqShoppingGuide, 
+  reqPersonalShop, 
+  reqTopic,
+  reqHotSearch, 
+  reqKeyWord
+} from '../api' 
 import {
  RECIVE_LIMITSHOP,
  RECIVE_POLICY,
@@ -6,7 +16,9 @@ import {
  RECIVE_CATEGORYS, 
  RECIVE_SHOP_GUIDE,
  RECIVE_PERSONAL_SHOP,
- RECIVE_TOPIC
+ RECIVE_TOPIC,
+ RECIVE_HOTSEARCH,
+ RECIVE_KEYWORD_SEARCH,
 } from './mutation-types'
 export default {
  //获取限时购列表
@@ -55,12 +67,33 @@ export default {
   }
  },
 
- async getTopic({commit}){
+ async getTopic({commit},{page,size}){
+   console.log(page,size)
+  const result = await reqTopic({page,size})
+  console.log(result)
+  if(result.code==='200'){
+   commit(RECIVE_TOPIC,result.data.result)
+  }
+ },
+/*  async getTopic({commit}){
   const result = await reqTopic()
   if(result.code===0){
    commit(RECIVE_TOPIC,result.data)
   }
+ }, */
+
+ async getHotSearch({commit},keywordPrefix){
+  const result = await reqHotSearch(keywordPrefix)
+  if(result.code==='200'){
+   commit(RECIVE_HOTSEARCH,result.data)
+  }
  },
 
 
+ async getKeyWordSearch({commit},keywordPrefix){
+  const result = await reqKeyWord(keywordPrefix)
+  if(result.code==='200'){
+   commit(RECIVE_KEYWORD_SEARCH,result.data)
+  }
+ }
 }

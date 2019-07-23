@@ -3,7 +3,7 @@
     <!-- 主页头部 -->
     <div class="homeHeader">
       <span class="wy"></span>
-      <input type="text" :placeholder="icon" class="search iconfont">
+      <input type="text" :placeholder="icon" class="search iconfont" @click="$router.push('/search')">
       <div class="login">登录</div>
     </div>
     <!-- 主页导航栏 -->

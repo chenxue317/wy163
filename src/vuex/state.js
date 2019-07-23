@@ -5,5 +5,7 @@ export default {
  categorys:[],
  shopGuide:[],
  personalShop:[],
- topic:[]
+ topic:[],
+ hotSearch:{},
+ keywordSearch:[]
 }

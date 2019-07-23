@@ -4,7 +4,7 @@
       <div class="bigImg" v-if="category">
         <img :src="category.bannerUrl" alt="">
       </div>
-      <ul class="categoryList">
+      <ul class="categoryList" v-if="category">
         <li class="item" v-for="subCate in category.subCateList" :key="subCate.id">
           <div class="smallImg">
             <img :src="subCate.bannerUrl" alt="">

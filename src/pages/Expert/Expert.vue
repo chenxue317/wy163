@@ -26,7 +26,7 @@
                 </div>
               </a>
             </div>
-               <div class="swiper-slide">
+            <div class="swiper-slide">
               <a href="javascript:;">
                 <div class="imgBox">
                   <img src="https://yanxuan.nosdn.127.net/4c7dea0d162b3dd3fb87dfe34829bb90.jpg?imageView&quality=75&thumbnail=670x371" alt="">

@@ -5,7 +5,9 @@ import {
  RECIVE_CATEGORYS, 
  RECIVE_SHOP_GUIDE, 
  RECIVE_PERSONAL_SHOP, 
- RECIVE_TOPIC
+ RECIVE_TOPIC,
+ RECIVE_HOTSEARCH,
+ RECIVE_KEYWORD_SEARCH
 } from './mutation-types'
 
 
@@ -38,5 +40,13 @@ export default {
  //
  [RECIVE_TOPIC](state,topic){
   state.topic = topic
+ },
+
+ [RECIVE_HOTSEARCH](state,hotSearch){
+  state.hotSearch = hotSearch
+ },
+
+ [RECIVE_KEYWORD_SEARCH](state,keywordSearch){
+  state.keywordSearch = keywordSearch
  },
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="searchContainer">
+  <div class="searchContainer" @click="$router.push('/search')">
    <input type="text" :placeholder="icon" class="search iconfont"/>
   </div>
 </template>

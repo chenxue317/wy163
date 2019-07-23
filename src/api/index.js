@@ -13,7 +13,13 @@ export const reqShoppingGuide = () => ajax('/shoppingGuide')
 export const reqPersonalShop = () => ajax('/personalShop')
 
 //发现甄选
-//export const reqTopic = ({ page,size}) =>ajax(`/you/topic/v1/find/recAuto.json?page=${page}&size=${size}`)
+export const reqTopic = ({ page,size}) =>ajax(`/you/topic/v1/find/recAuto.json?page=${page}&size=${size}`)
 
 //发现甄选mock
-export const reqTopic = () => ajax('/topic')
+//export const reqTopic = () => ajax('/topic')
+//获取热词
+export const reqHotSearch = () =>ajax('/you/xhr/search/init.json')
+
+//搜索关键字
+export const reqKeyWord = (keywordPrefix) => ajax('/you//xhr/search/searchAutoComplete.json?keywordPrefix='+keywordPrefix)
+
