@@ -4,7 +4,8 @@ import {
  RECIVE_NEWPRODUCTS,
  RECIVE_CATEGORYS, 
  RECIVE_SHOP_GUIDE, 
- RECIVE_PERSONAL_SHOP 
+ RECIVE_PERSONAL_SHOP, 
+ RECIVE_TOPIC
 } from './mutation-types'
 
 
@@ -32,5 +33,10 @@ export default {
  //私人定制
  [RECIVE_PERSONAL_SHOP](state,personalShop){
   state.personalShop = personalShop
+ },
+
+ //
+ [RECIVE_TOPIC](state,topic){
+  state.topic = topic
  },
 }

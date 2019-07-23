@@ -23,6 +23,7 @@
   background-color #fff
   line-height 88px
   border-bottom 1px solid #eee
+  z-index 10
   .search
    width 690px
    height 56px

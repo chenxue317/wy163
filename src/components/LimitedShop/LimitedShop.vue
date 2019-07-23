@@ -52,9 +52,9 @@
       }
     },
     mounted(){
-      this.timeId = setInterval(()=>{
+     /*  this.timeId = setInterval(()=>{
         this.date = this.limitShopObj.nextStartTime - Date.now()
-      },1000) 
+      },1000)  */
     },
     watch:{
       date(){

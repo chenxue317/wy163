@@ -4,5 +4,6 @@ export default {
  newProducts:{},
  categorys:[],
  shopGuide:[],
- personalShop:[]
+ personalShop:[],
+ topic:[]
 }

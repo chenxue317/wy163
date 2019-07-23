@@ -11,3 +11,9 @@ export const reqCategery = () => ajax('/category')
 export const reqShoppingGuide = () => ajax('/shoppingGuide')
 //获取私人定制
 export const reqPersonalShop = () => ajax('/personalShop')
+
+//发现甄选
+//export const reqTopic = ({ page,size}) =>ajax(`/you/topic/v1/find/recAuto.json?page=${page}&size=${size}`)
+
+//发现甄选mock
+export const reqTopic = () => ajax('/topic')

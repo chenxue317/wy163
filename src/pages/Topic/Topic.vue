@@ -2,56 +2,60 @@
 <!-- 识物 -->
   <div class="generalContainer">
    <TopicHeader/>
-   <div class="navWrap" v-if="1">
+   <div class="navWrap">
        <div class="nav">
          <a href="javacript:;" v-for="(nav,index) in navList" :key="index" :class="{active:currentIndex===index}">{{nav}}</a>
        </div>
     </div>
-   <ul class="mainContent">
-     <li class="item">
-      <a href="javascript:;" class="bigImg" v-if="0">
-        <div class="top">
-          <img src="https://yanxuan.nosdn.127.net/a714aeeb574585d3e23d35f1ee2db8b8.png?imageView&quality=65&thumbnail=56y56" alt="">
-          <span>选妹</span>
-        </div>
-        <p class="desc">夏凉用品购置指南，凉席、空调被、凉感四件套每满100立减20</p>
-        <div class="pic">
-          <img src="https://yanxuan.nosdn.127.net/ae09169ca36f7adc57458c5a371ab6df.jpg?imageView&quality=65&thumbnail=690y376" alt="">
-        </div>
-        <div class="view">
-          <i class="iconfont icon-view"></i>
-          <span class="num">5682人看过</span>
-        </div>
-      </a>
-      <a href="javascript:;" class="smallImg">
-        <div class="left">
+   <div class="contenteWrap">
+     <ul class="mainContent" v-for="(t,index) in topic" :key="index">
+      <li class="item"  v-for="(item,index) in t.topics" :key="index">
+        <a href="javascript:;" v-if="item.ad" class="ad">
+          <img :src="item.ad.picUrl" alt="">
+        </a>
+        <a href="javascript:;" class="bigImg" v-if="item.type===0">
           <div class="top">
-            <img src="https://yanxuan.nosdn.127.net/a714aeeb574585d3e23d35f1ee2db8b8.png?imageView&quality=65&thumbnail=56y56" alt="">
-            <span>选妹</span>
+            <img :src="item.avatar" alt="">
+            <span>{{item.nickname}}</span>
           </div>
-          <p class="desc">一次吃遍8种坚果，零食之王要这样吃才对</p>
-          <p class="category">鲜粹每日坚果</p>
+          <p class="desc">{{item.title}}</p>
+          <div class="pic">
+            <img :src="item.picUrl" alt="">
+          </div>
           <div class="view">
             <i class="iconfont icon-view"></i>
-            <span class="num">5682人看过</span>
+            <span class="num">{{item.readCount}}人看过</span>
           </div>
-        </div>
-        
-        <div class="pic">
-          <img src="https://yanxuan.nosdn.127.net/c0359f2f05aaee841da5dc09bfa23362.jpg?imageView&quality=65&thumbnail=272y272" alt="">
-        </div>
-        
-      </a>
-     </li>
-     
-     
-   </ul>
+        </a>
+        <a href="javascript:;" class="smallImg" v-if="item.type===2">
+          <div class="left">
+            <div class="top">
+              <img :src="item.avatar" alt="">
+              <span>{{item.nickname}}</span>
+            </div>
+            <p class="desc">{{item.title}}</p>
+            <p class="category">{{item.subTitle}}</p>
+            <div class="view">
+              <i class="iconfont icon-view"></i>
+              <span class="num">{{item.readCount}}人看过</span>
+            </div>
+          </div>
+          
+          <div class="pic">
+            <img :src="item.picUrl" alt="">
+          </div>
+          
+        </a>
+      </li>
+    </ul>
+   </div>
    
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import BScroll from 'better-scroll'
+  import {mapState} from 'vuex'
   import TopicHeader from '../../components/TopicHeader/TopicHeader.vue'
   export default {
     data() {
@@ -60,10 +64,16 @@
         currentIndex:0
       }
     },
+    computed:{
+      ...mapState(['topic']),
+    
+    },
     mounted(){
-      new BScroll('.navWrap',{
+      //一上来默认加载前五页
+      this.$store.dispatch('getTopic')
+   /*    new BScroll('.navWrap',{
         scrollX:true
-      })
+      }) */
     },
     components:{
       TopicHeader
@@ -77,6 +87,8 @@
       width 100%
       height 72px
       position fixed
+      z-index 10
+      background-color #fff
       left 0
       top 100px
       .nav
@@ -92,66 +104,39 @@
           flex-shrink 0  
           &.active
             color #b4282d
-            border-bottom 1px solid  #b4282d     
-    .mainContent
+            border-bottom 1px solid  #b4282d 
+    .contenteWrap     
       width 100%
       height 100%
-      padding 172px 0 100px
-      &::before
-        content ''
-        display block
-        width 100%
-        height 20px
-        background-color #f0f0f0
-      .item
-        position relative
-        &::after
+      padding 172px 0 100px      
+      .mainContent
+       
+        &::before
           content ''
-          position absolute
-          left 0
-          bottom 0
+          display block
           width 100%
           height 20px
           background-color #f0f0f0
-        a
-          color #333
-          display block
-          padding 36px 30px 
-          &.bigImg     
-            .top
-              margin-bottom 24px
-              display flex
-              align-items center
-              img 
-                width 54px
-                height 54px
-                border-radius 50%
-                margin-right 12px
-                border 1px solid #d9d9d9
-              span 
-                font-size 28px
-                
-            .desc
-              margin-bottom 16px
-              font-size 36px
-            .pic
-              img 
-                width 100%
-                height 376px 
-            .view
-              display flex
-              align-items center
-              margin-top 18px
-              color gray
-              font-size 24px 
-              .iconfont
-                margin-right 8px 
-          &.smallImg 
-            display flex
-            justify-content space-between
-            .left
-              width 400px
+        .item
+          position relative
+          &::after
+            content ''
+            position absolute
+            left 0
+            bottom 0
+            width 100%
+            height 20px
+            background-color #f0f0f0
+          a
+            color #333
+            display block
+            padding 36px 30px
+            &.ad
+              width 100%
+              height 100% 
+            &.bigImg     
               .top
+                margin-bottom 24px
                 display flex
                 align-items center
                 img 
@@ -166,24 +151,56 @@
               .desc
                 margin-bottom 16px
                 font-size 36px
-                padding-top 32px 
-              .category
-                color #7f7f7f
-                padding-top 8px  
+              .pic
+                img 
+                  width 100%
+                  height 376px 
               .view
                 display flex
                 align-items center
                 margin-top 18px
-                color #7f7f7f
+                color gray
                 font-size 24px 
                 .iconfont
-                  margin-right 8px   
-            .pic
-              img 
-                width 272px
-                height 272px 
-                
-            
+                  margin-right 8px 
+            &.smallImg 
+              display flex
+              justify-content space-between
+              .left
+                width 400px
+                .top
+                  display flex
+                  align-items center
+                  img 
+                    width 54px
+                    height 54px
+                    border-radius 50%
+                    margin-right 12px
+                    border 1px solid #d9d9d9
+                  span 
+                    font-size 28px
+                    
+                .desc
+                  margin-bottom 16px
+                  font-size 36px
+                  padding-top 32px 
+                .category
+                  color #7f7f7f
+                  padding-top 8px  
+                .view
+                  display flex
+                  align-items center
+                  margin-top 18px
+                  color #7f7f7f
+                  font-size 24px 
+                  .iconfont
+                    margin-right 8px   
+              .pic
+                img 
+                  width 272px
+                  height 272px 
+                  
+              
           
             
 </style>
