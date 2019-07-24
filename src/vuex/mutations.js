@@ -7,7 +7,8 @@ import {
  RECIVE_PERSONAL_SHOP, 
  RECIVE_TOPIC,
  RECIVE_HOTSEARCH,
- RECIVE_KEYWORD_SEARCH
+ RECIVE_KEYWORD_SEARCH,
+ ADD_TOPIC
 } from './mutation-types'
 
 
@@ -49,4 +50,11 @@ export default {
  [RECIVE_KEYWORD_SEARCH](state,keywordSearch){
   state.keywordSearch = keywordSearch
  },
+
+ [ADD_TOPIC](state,topic){
+  topic.forEach(t=>{
+   state.topic.push(t)
+  })
+  
+ }
 }

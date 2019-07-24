@@ -118,7 +118,7 @@
       NewProducts,
       LimitedShops
     },
-    mounted(){
+    async mounted(){
       const promiseArr = [
         //获取限时购
         this.$store.dispatch('getLimitShop'),
@@ -131,11 +131,8 @@
         //获取私人定制
         this.$store.dispatch('getPersonalShop')
       ]
-      Promise.all(promiseArr)
+      await Promise.all(promiseArr)
       
-      
-      
-
       //上面的轮播图
       const bigSwiper = new Swiper('.bigSwiper',{
         loop: true,

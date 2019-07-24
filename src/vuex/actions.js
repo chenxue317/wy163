@@ -19,6 +19,7 @@ import {
  RECIVE_TOPIC,
  RECIVE_HOTSEARCH,
  RECIVE_KEYWORD_SEARCH,
+ ADD_TOPIC
 } from './mutation-types'
 export default {
  //获取限时购列表
@@ -66,7 +67,7 @@ export default {
    commit(RECIVE_PERSONAL_SHOP,result.data)
   }
  },
-
+//topic初始化
  async getTopic({commit},{page,size}){
    console.log(page,size)
   const result = await reqTopic({page,size})
@@ -75,6 +76,19 @@ export default {
    commit(RECIVE_TOPIC,result.data.result)
   }
  },
+
+ //topic增加后面的
+ async addTopic({commit},{page,size}){
+  console.log(page,size)
+ const result = await reqTopic({page,size})
+ console.log(result)
+ if(result.code==='200'){
+  commit(ADD_TOPIC,result.data.result)
+ }
+},
+
+
+
 /*  async getTopic({commit}){
   const result = await reqTopic()
   if(result.code===0){

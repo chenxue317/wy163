@@ -8,8 +8,7 @@
        </div>
     </div>
     <div ref="betterScroll" class="betterScroll">
-      <mt-loadmore :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
-        <div class="contenteWrap">
+        <div class="contenteWrap" ref="content">
           <img src="../../assest/loading.jpg" alt="" v-if="!topic.length" class="loading">
           <ul class="mainContent" v-for="(t,index) in topic" :key="index">
               <li v-if="t.ad" class="ad">
@@ -54,7 +53,6 @@
               </li>
           </ul>
         </div>
-      </mt-loadmore>  
     </div>
     
    
@@ -71,7 +69,8 @@
     data() {
       return {
         navList: ['推荐','好货内部价','回购榜','晒单','开发者日记','达人','HOME'],
-        currentIndex:0
+        currentIndex:0,
+        page:1
       }
     },
     computed:{
@@ -79,20 +78,29 @@
     
     },
     methods:{
-      loadBottom() {
+     /*  loadBottom() {
         ...// load more data
         this.allLoaded = true;// if all data are loaded
         this.$refs.loadmore.onBottomLoaded();
-      }
+      } */
     },
     mounted(){
       //一上来默认加载前五页
       //this.$store.dispatch('getTopic',{page:1,size:5})
-      this.$store.dispatch('getTopic',{page:1,size:3})
+      
+      this.$store.dispatch('getTopic',{page:this.page,size:3})
       new BScroll('.navWrap',{
         scrollX:true
       })
-      this.bs = new BScroll(this.$refs.betterScroll,{})
+      const bs = new BScroll(this.$refs.betterScroll,{})
+      bs.on('scrollEnd',({x,y})=>{
+        const height = this.$refs.content.clientHeight-document.documentElement.clientHeight
+        if(height<=Math.abs(y)){
+          this.page ++
+          this.$store.dispatch('addTopic',{page:this.page,size:3})
+        }
+        
+      })
     },
     components:{
       TopicHeader,
