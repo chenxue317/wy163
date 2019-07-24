@@ -77,17 +77,7 @@
       ...mapState(['topic']),
     
     },
-    methods:{
-     /*  loadBottom() {
-        ...// load more data
-        this.allLoaded = true;// if all data are loaded
-        this.$refs.loadmore.onBottomLoaded();
-      } */
-    },
     mounted(){
-      //一上来默认加载前五页
-      //this.$store.dispatch('getTopic',{page:1,size:5})
-      
       this.$store.dispatch('getTopic',{page:this.page,size:3})
       new BScroll('.navWrap',{
         scrollX:true

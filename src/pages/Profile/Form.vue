@@ -16,10 +16,10 @@
       <span class="note" @click="changeMethod">{{text2}}</span>
      
     </span>
-    <button class="login-btn" @click="login">
+    <button class="login-btn" @click.prevent="login">
       <span>登录</span>
     </button>
-     <button class="other-btn" @click="otherLogin">
+     <button class="other-btn" @click.prevent="otherLogin">
       <span>其他方式登录</span>
     </button>
    
